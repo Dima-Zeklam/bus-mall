@@ -2,23 +2,33 @@ div{
     display: inline-block;
     position: relative;
     left: 200px;
+  
    
 }
 
 #Fimg , #Secimg,#Limg{
     width: 300px;
     padding: 20px;
-    
+  
   
 }
 
 button{
-    padding: 30px;
+    padding: 25px;
     width: 200px;
     position: relative;
-    left:200px;
-    font-size: 25;
-    background-color: blueviolet;
+    left:250px;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+   
+
+    
+}
+button:hover{
+    color: white;
+    background-color: black;
 }
 
 p{
