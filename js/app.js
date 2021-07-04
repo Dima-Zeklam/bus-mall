@@ -50,8 +50,8 @@ while(fIndex === sIndex || fIndex === lIndex || sIndex === lIndex){
      firstImg.setAttribute('alt',productLi[fIndex].imgName);
      secoundImg.setAttribute('alt',productLi[sIndex].imgName);
      lastImg.setAttribute('alt',productLi[lIndex].imgName);
-    firstImg.setAttribute('title',productLi[lIndex].imgName);
-    secoundImg.setAttribute('title',productLi[lIndex].imgName);
+    firstImg.setAttribute('title',productLi[fIndex].imgName);
+    secoundImg.setAttribute('title',productLi[sIndex].imgName);
     lastImg.setAttribute('title',productLi[lIndex].imgName);
       
     
