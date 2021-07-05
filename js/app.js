@@ -1,7 +1,6 @@
 
 'use strict';
 
-
 let firstImg = document.getElementById("Fimg");
 let secoundImg = document.getElementById("Secimg");
 let lastImg = document.getElementById("Limg");
@@ -9,13 +8,17 @@ let container=document.getElementById("container");
 let productLi =[];
 let attempts = 1;
 let maxAattempts = 10;
-let img = ['bag.jpg','banana.jpg','bathroom.jpg','boots.jpg','breakfast.jpg','bubblegum.jpg','chair.jpg','cthulhu.jpg','dog-duck.jpg','dog-duck.jpg','dragon.jpg','pen.jpg','pet-sweep.jpg','scissors.jpg','shark.jpg','sweep.png','tauntaun.jpg','unicorn.jpg','water-can.jpg','wine-glass.jpg'];
+let img = ['bag.jpg','banana.jpg','bathroom.jpg','boots.jpg','breakfast.jpg','bubblegum.jpg','chair.jpg','cthulhu.jpg','dog-duck.jpg','dragon.jpg','pen.jpg','pet-sweep.jpg','scissors.jpg','shark.jpg','sweep.png','tauntaun.jpg','unicorn.jpg','water-can.jpg','wine-glass.jpg'];
+let Pname =[];
+let votes = [];
+let seen = [] ;
 function Products(nameOfimg){
 this.imgName = nameOfimg.split('.')[0];
 this.exe = nameOfimg.split('.')[1];
 this.srcImg= 'img/' + nameOfimg ;
 this.views = 0;
 this.clicks=0;
+Pname.push(this.imgName);
 productLi.push(this);
 
 }
@@ -31,18 +34,48 @@ function getRandnum(){
 let fIndex ;
 let sIndex;
 let lIndex ;
+let num1 = ' ';
+let num2 = ' ';
+let num3 =  ' ';
 
-
+// function norepeat(){
+//     let condition = true;
+//     while(condition){
+//         if(fIndex === sIndex || fIndex === lIndex || sIndex === lIndex){
+            
+//                 fIndex=getRandnum();
+//                 sIndex=getRandnum();
+//         } else if(productLi[fIndex].imgName === num1 || productLi[fIndex].imgName === num2 || productLi[fIndex].imgName === num3 ){
+//                     fIndex=getRandnum();
+//                  } else if(productLi[sIndex].imgName === num2 || productLi[sIndex].imgName === num1 ||productLi[sIndex].imgName === num3) {
+//                     sIndex=getRandnum();
+//                  }else if(productLi[lIndex].imgName === num3 || productLi[lIndex].imgName === num1 || productLi[lIndex].imgName === num2){
+//                     lIndex=getRandnum();
+//                  }else if (fIndex === sIndex || fIndex === lIndex || sIndex === lIndex){
+//                     fIndex=getRandnum();
+//                     sIndex=getRandnum();
+//                  }
+//                  else{
+//                  condition =false;
+//                  }
+//                  console.log(fIndex +' '+ sIndex +' ' +lIndex);
+                
+//         }
+      
+// }
 function setRender(){
-    fIndex = getRandnum();
-    sIndex = getRandnum();
-    lIndex = getRandnum();
-
-while(fIndex === sIndex || fIndex === lIndex || sIndex === lIndex){
-
         fIndex=getRandnum();
         sIndex=getRandnum();
-    }
+        lIndex = getRandnum();
+        console.log(fIndex + ' ' + sIndex + ' ' + lIndex);
+        while(fIndex === sIndex || fIndex === lIndex || sIndex === lIndex){
+            
+            fIndex=getRandnum();
+            sIndex=getRandnum();
+            lIndex = getRandnum();
+            console.log(fIndex + ' ' + sIndex + ' ' + lIndex);
+        }
+        // norepeat();
 
     firstImg.setAttribute('src',productLi[fIndex].srcImg);
     secoundImg.setAttribute('src',productLi[sIndex].srcImg);
@@ -58,7 +91,10 @@ while(fIndex === sIndex || fIndex === lIndex || sIndex === lIndex){
     productLi[fIndex].views++;
     productLi[sIndex].views++;
     productLi[lIndex].views++;
-        
+
+    num1= productLi[fIndex].imgName;
+    num2 =  productLi[sIndex].imgName;
+    num3 = productLi[lIndex] .imgName
 
 }
 setRender();
@@ -68,8 +104,10 @@ function clickbutton(event){
     for(let i=0;i<productLi.length;i++){
     let p= document.createElement('p');
     p.textContent = `${productLi[i].imgName} had ${productLi[i].clicks} votes, and was seen ${productLi[i].views} times.`;
+    votes.push(productLi[i].clicks);
+    seen.push(productLi[i].views);
     container.appendChild(p);
-
+    // chartrender();
     }
 
 }
@@ -88,7 +126,7 @@ function handl(event){
         productLi[lIndex].clicks++;
        }
        setRender();
-       console.log(productLi);
+    //    console.log(productLi);
     }else{
         button.textContent="show result";
         container.appendChild(button);
@@ -96,8 +134,42 @@ function handl(event){
        firstImg.removeEventListener('click',handl);
        secoundImg.removeEventListener('click',handl);
        lastImg.removeEventListener('click',handl);
+       
        }
        
     
     attempts++;
 }
+
+
+// function chartrender(){
+   
+// let ctx = document.getElementById('myChart').getContext('2d');
+// let myChart = new Chart(ctx, {
+//     type: 'bar',
+//     data: {
+//         labels: Pname,
+//         datasets: [{
+//             label: '# of Votes',
+//             data: votes,
+//             backgroundColor: 'red',
+         
+//             borderWidth: 1
+//         },{
+//                label: '# of views',
+//                 data: seen,
+//                 backgroundColor:'green',
+             
+//                 borderWidth: 1
+//         }]
+//     },
+//     options: {
+//         scales: {
+//             y: {
+//                 beginAtZero: true
+//             }
+//         },
+//         yAxes: [{ticks: {min: 0, max:10}}]
+//     }
+// });
+// }
