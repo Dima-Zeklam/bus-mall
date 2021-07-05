@@ -38,44 +38,35 @@ let num1 = ' ';
 let num2 = ' ';
 let num3 =  ' ';
 
-// function norepeat(){
-//     let condition = true;
-//     while(condition){
-//         if(fIndex === sIndex || fIndex === lIndex || sIndex === lIndex){
+function norepeat(){
+    let condition = true;
+    while(condition){
+        if(fIndex === sIndex || fIndex === lIndex || sIndex === lIndex){
             
-//                 fIndex=getRandnum();
-//                 sIndex=getRandnum();
-//         } else if(productLi[fIndex].imgName === num1 || productLi[fIndex].imgName === num2 || productLi[fIndex].imgName === num3 ){
-//                     fIndex=getRandnum();
-//                  } else if(productLi[sIndex].imgName === num2 || productLi[sIndex].imgName === num1 ||productLi[sIndex].imgName === num3) {
-//                     sIndex=getRandnum();
-//                  }else if(productLi[lIndex].imgName === num3 || productLi[lIndex].imgName === num1 || productLi[lIndex].imgName === num2){
-//                     lIndex=getRandnum();
-//                  }else if (fIndex === sIndex || fIndex === lIndex || sIndex === lIndex){
-//                     fIndex=getRandnum();
-//                     sIndex=getRandnum();
-//                  }
-//                  else{
-//                  condition =false;
-//                  }
-//                  console.log(fIndex +' '+ sIndex +' ' +lIndex);
+                fIndex=getRandnum();
+                sIndex=getRandnum();
+                lIndex = getRandnum();
+        } else if(productLi[fIndex].imgName === num1 || productLi[fIndex].imgName === num2 || productLi[fIndex].imgName === num3 ){
+                    fIndex=getRandnum();
+                 } else if(productLi[sIndex].imgName === num2 || productLi[sIndex].imgName === num1 ||productLi[sIndex].imgName === num3) {
+                    sIndex=getRandnum();
+                 }else if(productLi[lIndex].imgName === num3 || productLi[lIndex].imgName === num1 || productLi[lIndex].imgName === num2){
+                    lIndex=getRandnum();
+                 }
+                 else{
+                 condition =false;
+                 }
+                 console.log(fIndex +' '+ sIndex +' ' +lIndex);
                 
-//         }
+        }
       
-// }
+}
 function setRender(){
         fIndex=getRandnum();
         sIndex=getRandnum();
         lIndex = getRandnum();
-        console.log(fIndex + ' ' + sIndex + ' ' + lIndex);
-        while(fIndex === sIndex || fIndex === lIndex || sIndex === lIndex){
-            
-            fIndex=getRandnum();
-            sIndex=getRandnum();
-            lIndex = getRandnum();
-            console.log(fIndex + ' ' + sIndex + ' ' + lIndex);
-        }
-        // norepeat();
+         
+        norepeat();
 
     firstImg.setAttribute('src',productLi[fIndex].srcImg);
     secoundImg.setAttribute('src',productLi[sIndex].srcImg);
@@ -107,7 +98,7 @@ function clickbutton(event){
     votes.push(productLi[i].clicks);
     seen.push(productLi[i].views);
     container.appendChild(p);
-    // chartrender();
+    chartrender();
     }
 
 }
@@ -126,7 +117,7 @@ function handl(event){
         productLi[lIndex].clicks++;
        }
        setRender();
-    //    console.log(productLi);
+       console.log(productLi);
     }else{
         button.textContent="show result";
         container.appendChild(button);
@@ -142,34 +133,34 @@ function handl(event){
 }
 
 
-// function chartrender(){
+function chartrender(){
    
-// let ctx = document.getElementById('myChart').getContext('2d');
-// let myChart = new Chart(ctx, {
-//     type: 'bar',
-//     data: {
-//         labels: Pname,
-//         datasets: [{
-//             label: '# of Votes',
-//             data: votes,
-//             backgroundColor: 'red',
+let ctx = document.getElementById('myChart').getContext('2d');
+let myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: Pname,
+        datasets: [{
+            label: '# of Votes',
+            data: votes,
+            backgroundColor: 'red',
          
-//             borderWidth: 1
-//         },{
-//                label: '# of views',
-//                 data: seen,
-//                 backgroundColor:'green',
+            borderWidth: 2
+        },{
+               label: '# of views',
+                data: seen,
+                backgroundColor:'green',
              
-//                 borderWidth: 1
-//         }]
-//     },
-//     options: {
-//         scales: {
-//             y: {
-//                 beginAtZero: true
-//             }
-//         },
-//         yAxes: [{ticks: {min: 0, max:10}}]
-//     }
-// });
-// }
+                borderWidth: 2
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        },
+        yAxes: [{ticks: {min: 0, max:10}}]
+    }
+});
+}
