@@ -145,13 +145,13 @@ let myChart = new Chart(ctx, {
             data: votes,
             backgroundColor: 'red',
          
-            borderWidth: 1
+            borderWidth: 2
         },{
                label: '# of views',
                 data: seen,
                 backgroundColor:'green',
              
-                borderWidth: 1
+                borderWidth: 2
         }]
     },
     options: {
