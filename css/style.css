@@ -38,3 +38,20 @@ p{
     font-size: 25px;
     margin: 30px;
 }
+
+h1{
+    font-size:30px;
+    font-weight: bold;
+}
+
+header{
+    text-align: center;
+    height: 150px;
+    border: black 2px solid;
+     padding-top: 30px;
+     position: inherit;
+     display: sticky;
+}
+body{
+    /* background-image: url('http://pavbca.com/walldb/original/a/c/a/786014.jpg'); */
+}

@@ -43,26 +43,41 @@ let num3 = ' ';
 function norepeat() {
     let condition = true;
     while (condition) {
+        fIndex = getRandnum();
+        sIndex = getRandnum();
+        lIndex = getRandnum();
         if (fIndex === sIndex || fIndex === lIndex || sIndex === lIndex) {
-
+console.log("first condition");
             fIndex = getRandnum();
             sIndex = getRandnum();
             lIndex = getRandnum();
         } else if (productLi[fIndex].imgName === num1 || productLi[fIndex].imgName === num2 || productLi[fIndex].imgName === num3) {
             fIndex = getRandnum();
+            console.log("sec condition");
         } else if (productLi[sIndex].imgName === num2 || productLi[sIndex].imgName === num1 || productLi[sIndex].imgName === num3) {
             sIndex = getRandnum();
+            console.log("third condition");
         } else if (productLi[lIndex].imgName === num3 || productLi[lIndex].imgName === num1 || productLi[lIndex].imgName === num2) {
             lIndex = getRandnum();
+            console.log("last condition");
         }
-        else {
+        
+         else{
             condition = false;
-        }
-        console.log(fIndex + ' ' + sIndex + ' ' + lIndex);
+            console.log("else condition");
+         }
+            
+       
+            productLi[fIndex].views++;
+            productLi[sIndex].views++;
+            productLi[lIndex].views++;
+       
 
     }
-
+    
+  
 }
+
 function SaveToLocalStorage() {
     let strObj = JSON.stringify(productLi);
     localStorage.setItem('product', strObj);
@@ -74,18 +89,17 @@ function ReadFromLocalStorage() {
     let normalObj = JSON.parse(strObj);
     if(normalObj !== null){
         productLi = normalObj;
-        setRender();
+        // setRender();
     }
    
 }
 ReadFromLocalStorage();
-function setRender() {
-    fIndex = getRandnum();
-    sIndex = getRandnum();
-    lIndex = getRandnum();
 
+function setRender() {
+    
     norepeat();
 
+    console.log(fIndex + ' ' + sIndex + ' ' + lIndex);
     firstImg.setAttribute('src', productLi[fIndex].srcImg);
     secoundImg.setAttribute('src', productLi[sIndex].srcImg);
     lastImg.setAttribute('src', productLi[lIndex].srcImg);
@@ -96,10 +110,10 @@ function setRender() {
     secoundImg.setAttribute('title', productLi[sIndex].imgName);
     lastImg.setAttribute('title', productLi[lIndex].imgName);
 
-
-    productLi[fIndex].views++;
-    productLi[sIndex].views++;
-    productLi[lIndex].views++;
+   
+    console.log(productLi[fIndex].views);
+    console.log(productLi[sIndex].views);
+    console.log( productLi[lIndex].views);
 
     num1 = productLi[fIndex].imgName;
     num2 = productLi[sIndex].imgName;
@@ -117,8 +131,10 @@ function clickbutton(event) {
         seen.push(productLi[i].views);
         container.appendChild(p);
         chartrender();
+        console.log('yes');
+      
     }
-
+    button.removeEventListener('click', clickbutton);
 }
 firstImg.addEventListener('click', handl);
 secoundImg.addEventListener('click', handl);
@@ -143,10 +159,11 @@ function handl(event) {
         firstImg.removeEventListener('click', handl);
         secoundImg.removeEventListener('click', handl);
         lastImg.removeEventListener('click', handl);
-
-    }
-    SaveToLocalStorage();
-
+        SaveToLocalStorage();
+       
+    } 
+   
+ 
     attempts++;
 }
 
@@ -183,3 +200,4 @@ function chartrender() {
     });
 }
 
+  
