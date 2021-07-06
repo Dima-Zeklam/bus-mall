@@ -68,9 +68,6 @@ console.log("first condition");
          }
             
        
-            productLi[fIndex].views++;
-            productLi[sIndex].views++;
-            productLi[lIndex].views++;
        
 
     }
@@ -97,7 +94,7 @@ ReadFromLocalStorage();
 
 function setRender() {
     
-    norepeat();
+ 
 
     console.log(fIndex + ' ' + sIndex + ' ' + lIndex);
     firstImg.setAttribute('src', productLi[fIndex].srcImg);
@@ -111,6 +108,9 @@ function setRender() {
     lastImg.setAttribute('title', productLi[lIndex].imgName);
 
    
+    productLi[fIndex].views++;
+    productLi[sIndex].views++;
+    productLi[lIndex].views++;
     console.log(productLi[fIndex].views);
     console.log(productLi[sIndex].views);
     console.log( productLi[lIndex].views);
@@ -120,6 +120,7 @@ function setRender() {
     num3 = productLi[lIndex].imgName
 
 }
+norepeat();
 setRender();
 let button = document.createElement('button');
 
@@ -150,6 +151,7 @@ function handl(event) {
         } else if ('Limg' === clicked) {
             productLi[lIndex].clicks++;
         }
+        norepeat();
         setRender();
         console.log(productLi);
     } else {
