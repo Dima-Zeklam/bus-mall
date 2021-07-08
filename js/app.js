@@ -13,7 +13,7 @@ let Pname = [];
 let votes = [];
 let seen = [];
 
-
+// constructer function
 function Products(nameOfimg) {
     this.imgName = nameOfimg.split('.')[0];
     this.exe = nameOfimg.split('.')[1];
@@ -40,6 +40,7 @@ let num1 = ' ';
 let num2 = ' ';
 let num3 = ' ';
 
+// function to make sure that the images not repeated
 function norepeat() {
     let condition = true;
     while (condition) {
@@ -169,7 +170,7 @@ function handl(event) {
     attempts++;
 }
 
-
+// to make a chart
 function chartrender() {
 
     let ctx = document.getElementById('myChart').getContext('2d');
